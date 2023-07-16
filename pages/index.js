@@ -1,0 +1,40 @@
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+//import MannualHeader from "../components/MannualHeader";
+import Header from "../components/Header";
+import LotteryEntrance from "../components/LotteryEntrance";
+import { useMoralis } from "react-moralis";
+
+const supportedChains = ["31337", "11155111"]
+
+export default function Home() {
+  const { isWeb3Enabled, chainId } = useMoralis();
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Try Your Luck</title>
+        <meta name="description" content="Smart Contract Lottery App" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Header />
+      <LotteryEntrance />
+      hi
+    </div>
+  );
+}
+
+/*{ <Header />
+{isWeb3Enabled ? (
+  <div>
+    {supportedChains.includes(parseInt(chainId).toString()) ? (
+      <div className="flex flex-row">
+        <LotteryEntrance className="p-8" />
+      </div>
+    ) : (
+      <div>{`Please switch to a supported chainId. The supported Chain Ids are: ${supportedChains}`}</div>
+    )}
+  </div>
+) : (
+  <div>Please connect to a Wallet</div>
+)} }*/
